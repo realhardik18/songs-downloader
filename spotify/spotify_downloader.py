@@ -1,7 +1,7 @@
 from googlesearch import search
 from pytube import YouTube
 import os
-from name_getter import track_name_getter
+from name_getter_spotify import track_name_getter
 
 playlist_idee = 'playlist id goes here'
 songz = track_name_getter("spotify", playlist_idee)
@@ -14,7 +14,7 @@ for song in songz:
     vid_link = results[0]
     yt = YouTube(vid_link)
     video = yt.streams.filter(only_audio=True).first()
-    destination = r"D:\songs"
+    destination = r"your file destination"
     out_file = video.download(output_path=destination)
     base, ext = os.path.splitext(out_file)
     new_file = f"{song}.mp3"
